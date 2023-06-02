@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head">
+    <meta charset="UTF-8" content="application/json">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="layout :: encabezado"></div>
+<div>
+    <br>
+</div>
+<div class="container mt-3">
+    <h2>Agregar nuevo campeon</h2>
+    <form action="localhost:8080\personajes\save" method="POST" enctype="application/json" accept-charset="UTF-8">
+        <div class="mb-3 mt-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Enter name" name="nombre">
+        </div>
+        <div class="mb-3">
+            <label for="region" class="form-label">Region:</label>
+            <input type="text" class="form-control" id="region" placeholder="Enter region" name="region">
+        </div>
+        <div class="mb-3">
+            <label for="urlImage" class="form-label">Link imagen:</label>
+            <input type="text" class="form-control" id="urlImage" placeholder="Enter url" name="urlImagen">
+        </div>
+        <div class="mb-3">
+            <label for="lore" class="form-label">Lore:</label>
+            <input type="text" class="form-control" id="lore" placeholder="Enter lore" name="lore">
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+<div th:replace="layout :: pie"></div>
+</body>
