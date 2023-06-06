@@ -1,5 +1,6 @@
 package ico.fes.apilol.controller;
 
+import com.google.gson.Gson;
 import ico.fes.apilol.model.Personaje;
 import ico.fes.apilol.persistencia.PersonajeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +27,16 @@ public class PersonajesController {
     // El metodo save puede hacer un insert y un update, si se le manda un id hara un update de existir el id,
     // en caso contrario (sin id o sin match con un id) hara un insert
     @PostMapping("/save")
-    public Personaje saveElement(@RequestBody Personaje personaje){
+    public Personaje saveElement(@RequestBody String perString){
+        Gson gson = new Gson();
+        Personaje personaje = gson.fromJson(perString, Personaje.class);
         return personajeRepo.save(personaje);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteElement(@PathVariable int id){
-        personajeRepo.deleteById(id);
+    @PostMapping("/delete/")
+    public Personaje deleteElement(@RequestBody Personaje personaje){
+        personajeRepo.deleteById(personaje.getId());
+        return personaje;
     }
 }
 
