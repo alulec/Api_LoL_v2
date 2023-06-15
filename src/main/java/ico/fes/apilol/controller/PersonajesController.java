@@ -35,6 +35,7 @@ public class PersonajesController {
 
     @PostMapping("/delete/")
     public Personaje deleteElement(@RequestBody Personaje personaje){
+        System.out.println("El id de personaje a borrar es: " + personaje.getId());
         personajeRepo.deleteById(personaje.getId());
         return personaje;
     }
